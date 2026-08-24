@@ -1,32 +1,19 @@
-# Isabela Souza — Portfolio
+# Isabela Souza — One Day With Portfolio
 
-Portfólio digital desenvolvido para apresentar o trabalho de **Isabela Souza** como Social Media e Content Creator.
+Editorial portfolio built from the approved Discovery and HYPER MASTER direction.
 
-O projeto foi pensado como uma experiência visual e editorial, utilizando fotografia, vídeo, tipografia e movimento para apresentar sua identidade profissional, trabalhos e processo criativo de maneira mais autoral do que um portfólio tradicional.
+## Preview locally
 
-## Sobre o projeto
+```bash
+python -m http.server 4173
+```
 
-A proposta do portfólio é reunir em uma única experiência digital a apresentação profissional de Isabela, seus projetos de conteúdo e sua abordagem de criação para marcas, experiências e negócios.
+Then open `http://localhost:4173`.
 
-Um dos principais destaques é o conceito **One Day With**, uma proposta de produção de conteúdo baseada em acompanhar e registrar um dia real de uma marca ou profissional, transformando esses momentos em conteúdo pensado para redes sociais.
+## Deployment
 
-## Experiência
+The project is fully static. It can be deployed directly to Vercel, Netlify, Cloudflare Pages, GitHub Pages or any static host. No build step is required.
 
-O site combina:
+## Content notes
 
-* Direção visual editorial
-* Fotografia como elemento central
-* Conteúdo audiovisual
-* Storytelling
-* Motion e microinterações
-* Layout responsivo
-* Experiência adaptada para desktop e mobile
-* Navegação simples e focada no conteúdo
-
-A direção busca transmitir uma identidade **sofisticada, contemporânea, feminina e criativa**, mantendo o trabalho e a personalidade da profissional como protagonistas.
-
-## Objetivo
-
-Mais do que funcionar como uma galeria de trabalhos, o portfólio foi criado para comunicar a forma como Isabela observa, registra e transforma momentos em conteúdo.
-
-**One day. One story. One perspective.**
+The site intentionally avoids unconfirmed business information such as pricing, metrics, location, package quantities, delivery times and client claims. Replace/add project media only when real, publishable assets are available.
