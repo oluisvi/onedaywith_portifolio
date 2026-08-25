@@ -4,15 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#f2eadc" />
-  <meta name="description" content="Portfólio de Isabela Souza — produção de conteúdo mobile e One Day With: uma experiência para transformar a rotina de negócios em conteúdo para redes sociais." />
+  <meta name="description" content="Portfólio de Isabela Souza — criadora de conteúdo especializada em vídeos para redes sociais. Conheça o One Day With, produções, roteiros e direção de conteúdo." />
   <meta name="robots" content="index,follow" />
   <meta property="og:title" content="Isabela Souza — One Day With" />
-  <meta property="og:description" content="Conteúdo nasce daquilo que já acontece. Conheça o One Day With e o trabalho de Isabela Souza." />
+  <meta property="og:description" content="Captação, direção e estratégia para transformar rotina, trabalho e experiência em conteúdo que representa a marca." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/isabela-portrait-warm-1280.webp" />
-  <title>Isabela Souza — One Day With</title>
+  <title>Isabela Souza — Content Creator / One Day With</title>
   <link rel="preload" as="image" href="assets/isabela-portrait-warm-960.webp" imagesrcset="assets/isabela-portrait-warm-640.webp 640w, assets/isabela-portrait-warm-960.webp 960w, assets/isabela-portrait-warm-1280.webp 1280w" imagesizes="(max-width: 900px) 70vw, 42vw" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="expansion.css" />
+  <script src="media-data.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -29,6 +31,7 @@
     <a class="brand" href="#top" aria-label="Isabela Souza — início">ISABELA SOUZA</a>
     <nav class="site-nav" aria-label="Navegação principal">
       <a href="#work">Work</a>
+      <a href="#about">Isabela</a>
       <a href="#one-day">One Day With</a>
       <a href="#contact">Contato</a>
     </nav>
@@ -37,7 +40,7 @@
   <main id="main">
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero__edition">PORTFÓLIO / 2026</div>
-      <div class="hero__role">CONTENT CREATOR / SOCIAL MEDIA</div>
+      <div class="hero__role">CONTENT CREATOR / VIDEO FOR SOCIAL</div>
 
       <div class="hero__title-wrap" data-reveal>
         <h1 id="hero-title" class="hero__title">
@@ -60,8 +63,8 @@
       </div>
 
       <div class="hero__statement" data-reveal>
-        <p>Transformar aquilo que já acontece dentro de um negócio em conteúdo capaz de mostrar seu verdadeiro valor.</p>
-        <a class="text-link" href="#one-day">Conheça a experiência <span aria-hidden="true">↘</span></a>
+        <p>Transformo rotina, trabalho e experiência em vídeos que realmente representam a sua marca.</p>
+        <a class="text-link" href="#work">Ver trabalhos <span aria-hidden="true">↘</span></a>
       </div>
 
       <div class="hero__scroll" aria-hidden="true">SCROLL TO ENTER THE DAY</div>
@@ -81,22 +84,62 @@
         <h2 id="work-title" class="display-title" data-reveal>Trabalho em movimento.</h2>
       </div>
 
-      <div class="work__grid">
-        <a class="reel-frame" data-reveal href="https://www.instagram.com/reel/DcWL1mEhLUs/" target="_blank" rel="noreferrer" aria-label="Assistir ao Reel produzido por Isabela Souza no Instagram">
-          <div class="reel-frame__poster">
-            <span>REEL / INSTAGRAM</span>
-            <span class="reel-frame__play" aria-hidden="true">▶</span>
-            <span>PROJECT 01 <b aria-hidden="true">↗</b></span>
+      <div class="work__projects">
+        <article class="project-card project-card--primary" data-reveal>
+          <button class="project-card__media project-card__media-button" type="button" data-open-gallery="project-01" aria-label="Ver bastidores do primeiro projeto">
+            <img src="assets/project-01-thumbnail.webp" alt="Capa do Reel sobre quantas sessões de laser são necessárias" width="900" height="1600" loading="lazy" />
+            <span class="project-card__play" aria-hidden="true">BASTIDORES / 02</span>
+          </button>
+          <div class="project-card__body">
+            <div class="project-card__meta"><span>PROJECT / 01</span><span>ESTÉTICA / REEL</span></div>
+            <h3>Informação que ganha ritmo, direção e linguagem de rede.</h3>
+            <p>Conteúdo informativo pensado para explicar um tema com naturalidade, mantendo a profissional e a mensagem como protagonistas.</p>
+            <div class="project-card__actions">
+              <a class="arrow-link" href="https://www.instagram.com/reel/DcWL1mEhLUs/?igsi=ZGV4ZGN0eDZuMWw2" target="_blank" rel="noreferrer">Assistir no Instagram <span aria-hidden="true">↗</span></a>
+              <button class="project-card__bts" type="button" data-open-gallery="project-01">Ver bastidores <span aria-hidden="true">→</span></button>
+            </div>
           </div>
-        </a>
+        </article>
 
-        <div class="work__copy" data-reveal>
-          <p class="eyebrow">REEL PUBLICADO</p>
-          <h3>Conteúdo pensado para a linguagem das redes, não adaptado para ela depois.</h3>
-          <p>Produção mobile, direção durante a gravação e edição fazem parte da experiência. O foco está em transformar o que já existe no negócio em material pronto para ser visto.</p>
-          <a class="arrow-link" href="https://www.instagram.com/reel/DcWL1mEhLUs/" target="_blank" rel="noreferrer">Assistir no Instagram <span aria-hidden="true">↗</span></a>
-        </div>
+        <article class="project-card project-card--reverse project-card--rico" data-reveal>
+          <button class="project-card__media project-card__media-button" type="button" data-open-gallery="project-02" aria-label="Ver bastidores do projeto Rico Defumados">
+            <img src="assets/project-02-thumbnail.webp" alt="Carne defumada sendo cortada durante a produção do Rico Defumados" width="900" height="1600" loading="lazy" />
+            <span class="project-card__play" aria-hidden="true">BASTIDORES / 07</span>
+          </button>
+          <div class="project-card__body project-card__body--rico">
+            <div class="project-card__meta"><span>PROJECT / 02</span><span>RICO DEFUMADOS</span></div>
+            <h3>Festa de Paraibuna — sabor, tradição e o momento antes de acabar.</h3>
+            <p>Na Festa de Paraibuna, o Rico Defumados levou sabor, tradição e aquele tipo de produto que chama atenção antes mesmo da primeira mordida.</p>
+            <blockquote>“O One Day With registra tudo aquilo que você precisa, antes de acabar.”</blockquote>
+            <div class="project-card__actions">
+              <a class="arrow-link" href="https://www.instagram.com/reel/Dcb4GaaTQ2X/?utm_source=ig_web_button_share_sheet&igsi=MzRlODBiNWFlZA==" target="_blank" rel="noreferrer">Assistir no Instagram <span aria-hidden="true">↗</span></a>
+              <button class="project-card__bts" type="button" data-open-gallery="project-02">Ver bastidores <span aria-hidden="true">→</span></button>
+            </div>
+          </div>
+        </article>
       </div>
+
+      <section class="equipment-showcase" aria-labelledby="equipment-title" data-reveal>
+        <div class="equipment-showcase__head">
+          <p class="section-index">ON SET / EQUIPMENT</p>
+          <h3 id="equipment-title">Estrutura leve. Produção profissional.</h3>
+          <p>O equipamento entra para sustentar a ideia — luz, estabilidade e mobilidade sem tirar a naturalidade da gravação.</p>
+        </div>
+        <div class="equipment-rail" tabindex="0" aria-label="Equipamentos usados nas produções">
+          <figure>
+            <img src="assets/equipment-notebook.webp" alt="Notebook usado no planejamento e criação de conteúdo" width="1200" height="1800" loading="lazy" />
+            <figcaption>PLANEJAMENTO / NOTEBOOK</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/equipment-kit.webp" alt="Kit de acessórios e suporte mobile para captação" width="1200" height="1693" loading="lazy" />
+            <figcaption>KIT MOBILE / CAPTAÇÃO</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/equipment-studio.webp" alt="Estúdio preparado com luzes e câmera para produção" width="1200" height="1600" loading="lazy" />
+            <figcaption>LUZ / ESTÚDIO</figcaption>
+          </figure>
+        </div>
+      </section>
     </section>
 
     <section class="about" id="about" aria-labelledby="about-title">
@@ -110,23 +153,44 @@
         <p class="section-index">02 / ISABELA</p>
         <h2 id="about-title" class="display-title" data-reveal>Conteúdo com olhar de dentro.</h2>
         <div class="about__body" data-reveal>
-          <p>O trabalho parte do que é real: pessoas, rotina, ambiente, produtos e serviços.</p>
-          <p>Antes de gravar, existe entendimento. Durante a produção, existe direção. Depois, existe edição para transformar momentos do dia em comunicação.</p>
+          <p>Sou criadora de conteúdo especializada em vídeos para redes sociais.</p>
+          <p>Meu trabalho une captação, direção e olhar estratégico para transformar a rotina e o trabalho de profissionais em conteúdos que valorizam a marca e aproximam o público.</p>
         </div>
         <div class="about__signature" aria-label="Isabela Souza">ISABELA / SOUZA</div>
       </div>
     </section>
 
+    <section class="services section-pad" aria-labelledby="services-title">
+      <div class="services__intro">
+        <p class="section-index">03 / SERVICES</p>
+        <div>
+          <h2 id="services-title" class="display-title" data-reveal>Vídeo antes de volume.</h2>
+          <p class="services__lead" data-reveal>O foco é produção de conteúdo em vídeo e experiências de gravação — não gestão contínua de redes sociais.</p>
+        </div>
+      </div>
+      <div class="services__list">
+        <article data-reveal><span>01</span><h3>One Day With</h3><p>Uma experiência de produção para transformar um período de gravação em vários conteúdos alinhados ao negócio.</p></article>
+        <article data-reveal><span>02</span><h3>Vídeos avulsos</h3><p>Produções pontuais para campanhas, lançamentos, rotina, serviços, produtos e momentos específicos.</p></article>
+        <article data-reveal><span>03</span><h3>Roteiros</h3><p>Criação de ideias e roteiros para dar clareza ao que precisa ser comunicado antes da gravação.</p></article>
+        <article data-reveal><span>04</span><h3>Direção de conteúdo</h3><p>Direcionamento criativo e estratégico para que o conteúdo tenha intenção, naturalidade e identidade.</p></article>
+      </div>
+    </section>
+
     <section class="one-day section-pad" id="one-day" aria-labelledby="one-day-title">
       <div class="one-day__intro">
-        <p class="section-index">03 / THE EXPERIENCE</p>
+        <p class="section-index">04 / THE EXPERIENCE</p>
         <div>
-          <h2 id="one-day-title" class="one-day__title" data-reveal>
-            <span>ONE DAY</span>
-            <span class="script-word">with</span>
-          </h2>
-          <p class="one-day__lead" data-reveal>Um período dedicado a observar, direcionar e registrar o que já acontece no seu negócio — e transformar isso em conteúdo editado para as redes.</p>
+          <h2 id="one-day-title" class="sr-only">One Day With</h2>
+          <img class="one-day__logo" src="assets/one-day-with-logo.webp" alt="One Day With" width="539" height="487" loading="lazy" />
+          <p class="one-day__lead" data-reveal>O One Day With nasceu para quem sabe que precisa aparecer nas redes, mas não tem tempo, organização ou direção para produzir conteúdo sozinho.</p>
         </div>
+      </div>
+
+      <div class="one-day__facts" data-reveal>
+        <div><span>PARA QUEM</span><p>Profissionais autônomos, empreendedores e negócios de serviços — com forte afinidade com beleza, estética, saúde, fitness, gastronomia e experiências.</p></div>
+        <div><span>ONDE</span><p>Jacareí, São José dos Campos, Vale do Paraíba e região. Produções em outras cidades mediante disponibilidade e orçamento.</p></div>
+        <div><span>DURAÇÃO</span><p>De aproximadamente 1h30 até experiências mais completas, com maior volume de conteúdos, chegando a 3h30.</p></div>
+        <div><span>INCLUI</span><p>Planejamento, ideias e direcionamento, captação, organização dos conteúdos e edição. A entrega varia conforme o plano contratado.</p></div>
       </div>
 
       <div class="content-rail" aria-label="Tipos de conteúdo">
@@ -139,41 +203,40 @@
       <div class="one-day__principles">
         <article data-reveal>
           <span>01</span>
-          <h3>REAL</h3>
-          <p>O ponto de partida é aquilo que já existe no negócio, sem exigir uma rotina artificial para a câmera.</p>
+          <h3>PLANEJADO</h3>
+          <p>Um bom vídeo começa antes da gravação: contexto, ideias e direção definem o que precisa ser captado.</p>
         </article>
         <article data-reveal>
           <span>02</span>
-          <h3>MOBILE-FIRST</h3>
-          <p>Filmagens pensadas desde o início para o ritmo, formato e consumo das redes sociais.</p>
+          <h3>NATURAL</h3>
+          <p>A rotina, o ambiente e o conhecimento do profissional viram matéria-prima sem transformar o conteúdo em algo artificial.</p>
         </article>
         <article data-reveal>
           <span>03</span>
           <h3>EDITADO</h3>
-          <p>O processo não termina na gravação: o material é preparado para se transformar em conteúdo.</p>
+          <p>O material gravado é organizado e editado para se transformar em conteúdo pronto para a linguagem das redes.</p>
         </article>
       </div>
     </section>
 
     <section class="process section-pad" id="process" aria-labelledby="process-title">
       <div class="process__intro">
-        <p class="section-index">04 / THE PROCESS</p>
-        <h2 id="process-title" class="display-title" data-reveal>Do primeiro contato à entrega.</h2>
+        <p class="section-index">05 / THE PROCESS</p>
+        <h2 id="process-title" class="display-title" data-reveal>Um bom vídeo começa antes da gravação.</h2>
       </div>
 
       <ol class="process__steps">
-        <li data-reveal><span>01</span><h3>Contato</h3><p>Você entra em contato para esclarecer dúvidas sobre o serviço.</p></li>
-        <li data-reveal><span>02</span><h3>Introdução</h3><p>Metas, preferências e contexto atual começam a ser compreendidos.</p></li>
-        <li data-reveal><span>03</span><h3>Alinhamento</h3><p>Reunião ou formulário, de acordo com o pacote selecionado.</p></li>
-        <li data-reveal><span>04</span><h3>Plano</h3><p>Você seleciona o plano mais adequado aos objetivos e investimento.</p></li>
-        <li data-reveal><span>05</span><h3>Ação</h3><p>A gravação acontece na data selecionada.</p></li>
-        <li data-reveal><span>06</span><h3>Entrega</h3><p>O conteúdo editado é entregue de acordo com o prazo do plano.</p></li>
+        <li data-reveal><span>01</span><h3>Contato</h3><p>Entendemos a necessidade e qual experiência do One Day With faz mais sentido para o negócio.</p></li>
+        <li data-reveal><span>02</span><h3>Planejamento</h3><p>Definimos contexto, objetivos, ideias, direcionamento e o que precisa ser registrado.</p></li>
+        <li data-reveal><span>03</span><h3>Captação</h3><p>A produção acontece de forma dirigida, buscando naturalidade e aproveitando a rotina real do profissional.</p></li>
+        <li data-reveal><span>04</span><h3>Edição</h3><p>Os melhores momentos são organizados e transformados em conteúdos pensados para redes sociais.</p></li>
+        <li data-reveal><span>05</span><h3>Entrega</h3><p>O prazo é alinhado conforme o plano e o volume de conteúdos, preservando agilidade e qualidade.</p></li>
       </ol>
     </section>
 
     <section class="closing" id="contact" aria-labelledby="contact-title">
       <div class="closing__meta">
-        <span>ONE DAY WITH</span><span>2026</span><span>ISABELA SOUZA</span>
+        <span>ONE DAY WITH</span><span>VALE DO PARAÍBA / SP</span><span>ISABELA SOUZA</span>
       </div>
       <div class="closing__portrait" data-reveal>
         <img src="assets/isabela-portrait-outdoor-640.webp" alt="Retrato de Isabela Souza" width="640" height="853" loading="lazy" />
@@ -182,13 +245,40 @@
         <span>ONE DAY WITH...</span>
         <strong>YOU.</strong>
       </h2>
-      <p class="closing__copy">Para conhecer planos e valores de investimento, entre em contato.</p>
+      <p class="closing__copy">Solicite um orçamento e descubra qual experiência faz mais sentido para o seu negócio.</p>
       <div class="closing__actions">
-        <a href="https://www.instagram.com/onedaywitth/" target="_blank" rel="noreferrer">Instagram @onedaywitth <span aria-hidden="true">↗</span></a>
+        <a class="closing__primary" href="https://www.instagram.com/onedaywitth/" target="_blank" rel="noreferrer">Falar pelo Instagram @onedaywitth <span aria-hidden="true">↗</span></a>
         <a href="mailto:onedaywiith@gmail.com">onedaywiith@gmail.com <span aria-hidden="true">↗</span></a>
       </div>
-      <p class="closing__footer">UM DIA COM… VOCÊ.</p>
+      <p class="closing__footer">JACAREÍ · SÃO JOSÉ DOS CAMPOS · VALE DO PARAÍBA · OUTRAS CIDADES SOB CONSULTA</p>
     </section>
   </main>
+  <dialog class="media-lightbox" data-media-lightbox aria-modal="true" aria-labelledby="media-lightbox-title">
+    <div class="media-lightbox__shell">
+      <header class="media-lightbox__header">
+        <div>
+          <span class="media-lightbox__label" data-lightbox-label>PROJECT</span>
+          <h2 id="media-lightbox-title" data-lightbox-title>Bastidores</h2>
+          <p data-lightbox-description></p>
+        </div>
+        <button class="media-lightbox__close" type="button" data-lightbox-close aria-label="Fechar bastidores">Fechar <span aria-hidden="true">×</span></button>
+      </header>
+
+      <div class="media-lightbox__stage">
+        <div class="media-carousel" data-carousel-track data-carousel-index="0" tabindex="0" aria-label="Carrossel de bastidores"></div>
+      </div>
+
+      <footer class="media-lightbox__footer">
+        <div class="media-lightbox__nav">
+          <button type="button" data-carousel-prev aria-label="Mídia anterior">←</button>
+          <span data-carousel-counter aria-live="polite">01 / 01</span>
+          <button type="button" data-carousel-next aria-label="Próxima mídia">→</button>
+        </div>
+        <div class="media-lightbox__thumbs" data-carousel-thumbs aria-label="Escolher mídia"></div>
+        <a class="media-lightbox__instagram" data-lightbox-instagram href="#" target="_blank" rel="noreferrer">Ver Reel no Instagram ↗</a>
+      </footer>
+    </div>
+  </dialog>
+
 </body>
 </html>
