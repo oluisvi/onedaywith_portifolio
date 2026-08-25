@@ -60,12 +60,6 @@ window.ONE_DAY_MEDIA = {
         src: "assets/rico-bts-meat.webp",
         alt: "Fatias de carne do Rico Defumados em detalhe",
         caption: "Produto / detalhe"
-      },
-      {
-        type: "image",
-        src: "assets/rico-bts-filming-bw.webp",
-        alt: "Bastidor em preto e branco durante a gravação do Rico Defumados",
-        caption: "Bastidor / em campo"
       }
     ]
   }
