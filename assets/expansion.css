@@ -1,0 +1,14 @@
+/* Arquivo mantido para compatibilidade com a versão já publicada. */
+.gallery-stage:focus-within,
+.gallery-thumb:focus-visible,
+.project-card__media:focus-visible,
+.project-card__bts:focus-visible,
+.gallery-modal__close:focus-visible,
+.gallery-nav:focus-visible,
+.text-link:focus-visible,
+.arrow-link:focus-visible,
+.site-nav a:focus-visible,
+.brand:focus-visible {
+  outline: 2px solid rgba(176,141,82,.8);
+  outline-offset: 3px;
+}
