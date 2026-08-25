@@ -1,71 +1,71 @@
-window.galleryData = {
-  'project-01': {
-    title: 'Projeto 01 — Bastidores',
-    eyebrow: 'ESTÉTICA / REEL',
-    description: 'Bastidores do conteúdo sobre sessões de laser, com miniatura do Reels e momento de preparação.',
+window.ONE_DAY_MEDIA = {
+  "project-01": {
+    title: "Estética / conteúdo informativo",
+    label: "PROJECT / 01",
+    description: "Bastidores do conteúdo publicado sobre sessões de laser.",
+    instagram: "https://www.instagram.com/reel/DcWL1mEhLUs/?igsi=ZGV4ZGN0eDZuMWw2",
     items: [
       {
-        type: 'image',
-        src: 'assets/project-01-bts-01.webp',
-        thumb: 'assets/project-01-bts-01.webp',
-        alt: 'Isabela Souza sentada usando o celular durante a preparação do conteúdo',
-        label: 'FOTO / 01'
+        type: "image",
+        src: "assets/project-01-thumbnail.webp",
+        alt: "Capa do Reel com profissional falando sobre quantas sessões de laser são necessárias",
+        caption: "Capa publicada / Reel"
       },
       {
-        type: 'image',
-        src: 'assets/project-01-bts-02.webp',
-        thumb: 'assets/project-01-bts-02.webp',
-        alt: 'Miniatura do Reels sobre quantas sessões de laser são necessárias',
-        label: 'CAPA / 02'
+        type: "image",
+        src: "assets/project-01-bts-phone.webp",
+        alt: "Bastidor com profissional usando o celular durante a produção de conteúdo",
+        caption: "Bastidor / direção e conteúdo"
       }
     ]
   },
-  'project-02': {
-    title: 'Projeto 02 — Rico Defumados',
-    eyebrow: 'RICO DEFUMADOS / BTS',
-    description: 'Carrossel horizontal com fotos e vídeos dos bastidores do Reels gravado na Festa de Paraibuna.',
+  "project-02": {
+    title: "Rico Defumados / Festa de Paraibuna",
+    label: "PROJECT / 02",
+    description: "Captação de produto, ambiente e rotina durante a Festa de Paraibuna.",
+    instagram: "https://www.instagram.com/reel/Dcb4GaaTQ2X/?utm_source=ig_web_button_share_sheet&igsi=MzRlODBiNWFlZA==",
     items: [
       {
-        type: 'video',
-        src: 'assets/project-02-video-01.mp4',
-        poster: 'assets/project-02-video-01-poster.webp',
-        thumb: 'assets/project-02-video-01-poster.webp',
-        label: 'VÍDEO / 01'
+        type: "image",
+        src: "assets/project-02-thumbnail.webp",
+        alt: "Carne defumada sendo cortada durante a produção do Rico Defumados",
+        caption: "Produto em detalhe / Rico Defumados"
       },
       {
-        type: 'video',
-        src: 'assets/project-02-video-02.mp4',
-        poster: 'assets/project-02-video-02-poster.webp',
-        thumb: 'assets/project-02-video-02-poster.webp',
-        label: 'VÍDEO / 02'
+        type: "video",
+        src: "assets/rico-bts-video-01.mp4",
+        poster: "assets/rico-bts-video-01-poster.webp",
+        caption: "Bastidor em vídeo / captação 01"
       },
       {
-        type: 'image',
-        src: 'assets/project-02-bts-01.webp',
-        thumb: 'assets/project-02-bts-01.webp',
-        alt: 'Cortes de carne defumada sendo preparados',
-        label: 'FOTO / 03'
+        type: "image",
+        src: "assets/rico-bts-filming-color.webp",
+        alt: "Bastidor de captação de um prato do Rico Defumados",
+        caption: "Captação / Festa de Paraibuna"
       },
       {
-        type: 'image',
-        src: 'assets/project-02-bts-02.webp',
-        thumb: 'assets/project-02-bts-02.webp',
-        alt: 'Bastidor da gravação de bolinhos e fritura',
-        label: 'FOTO / 04'
+        type: "video",
+        src: "assets/rico-bts-video-02.mp4",
+        poster: "assets/rico-bts-video-02-poster.webp",
+        caption: "Bastidor em vídeo / captação 02"
       },
       {
-        type: 'image',
-        src: 'assets/project-02-bts-03.webp',
-        thumb: 'assets/project-02-bts-03.webp',
-        alt: 'Torresmo sendo cortado durante a produção do conteúdo',
-        label: 'FOTO / 05'
+        type: "image",
+        src: "assets/rico-bts-menu.webp",
+        alt: "Cardápio do Rico Defumados ao lado de equipamentos de captação",
+        caption: "Ambiente + kit / produção"
       },
       {
-        type: 'image',
-        src: 'assets/project-02-bts-04.webp',
-        thumb: 'assets/project-02-bts-04.webp',
-        alt: 'Cardápio do Rico Defumados em primeiro plano',
-        label: 'FOTO / 06'
+        type: "image",
+        src: "assets/rico-bts-meat.webp",
+        alt: "Fatias de carne do Rico Defumados em detalhe",
+        caption: "Produto / detalhe"
+      },
+      {
+        type: "image",
+        src: "assets/rico-bts-filming-bw.webp",
+        alt: "Bastidor em preto e branco durante a gravação do Rico Defumados",
+        caption: "Bastidor / em campo"
       }
     ]
   }

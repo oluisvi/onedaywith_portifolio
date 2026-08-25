@@ -1,17 +1,19 @@
-# One Day With — pacote atualizado
+# Isabela Souza — One Day With Portfolio
 
-Pacote estático com:
-- hero usando a logo do One Day With no lugar da primeira foto;
-- favicon / ícone da aba usando a logo;
-- imagens com leve photo enhance;
-- bastidores em carrossel horizontal;
-- vídeos com `controls` e reprodução funcionando;
-- estrutura pronta para substituir no projeto atual.
+Editorial portfolio built from the approved Discovery and HYPER MASTER direction.
 
-## Arquivos principais
-- `index.html`
-- `styles.css`
-- `expansion.css`
-- `script.js`
-- `media-data.js`
-- `assets/*`
+## Preview locally
+
+```bash
+python -m http.server 4173
+```
+
+Then open `http://localhost:4173`.
+
+## Deployment
+
+The project is fully static. It can be deployed directly to Vercel, Netlify, Cloudflare Pages, GitHub Pages or any static host. No build step is required.
+
+## Content notes
+
+The site intentionally avoids unconfirmed business information such as pricing, metrics, location, package quantities, delivery times and client claims. Replace/add project media only when real, publishable assets are available.
