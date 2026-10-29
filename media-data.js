@@ -16,6 +16,11 @@ window.ONE_DAY_MEDIA = {
         src: "assets/project-01-bts-phone.webp",
         alt: "Bastidor com profissional usando o celular durante a produção de conteúdo",
         caption: "Bastidor / direção e conteúdo"
+      },
+      {
+        type: "instagram",
+        src: "https://www.instagram.com/reel/DcWL1mEhLUs/",
+        caption: "Reel publicado / conteúdo informativo de beleza"
       }
     ]
   },
@@ -30,6 +35,18 @@ window.ONE_DAY_MEDIA = {
         src: "assets/project-02-thumbnail.webp",
         alt: "Carne defumada sendo cortada durante a produção do Rico Defumados",
         caption: "Produto em detalhe / Rico Defumados"
+      },
+      {
+        type: "video",
+        src: "assets/project-02-video-01.mp4",
+        poster: "assets/project-02-video-01-poster.webp",
+        caption: "Vídeo de vitrine / convite para a Festa de Paraibuna"
+      },
+      {
+        type: "video",
+        src: "assets/project-02-video-02.mp4",
+        poster: "assets/project-02-video-02-poster.webp",
+        caption: "Vídeo de vitrine / seleção Rico Defumados"
       },
       {
         type: "video",
@@ -63,9 +80,48 @@ window.ONE_DAY_MEDIA = {
       },
       {
         type: "image",
-        src: "assets/rico-bts-filming-bw.webp",
-        alt: "Bastidor em preto e branco durante a gravação do Rico Defumados",
-        caption: "Bastidor / em campo"
+        src: "assets/project-02-bts-02.webp",
+        alt: "Isabela gravando um profissional enquanto ele prepara os salgados do Rico Defumados",
+        caption: "Captação / em campo"
+      }
+    ]
+  },
+  "project-03": {
+    title: "Cobertura de aniversário / Brasilidades",
+    label: "PROJECT / 03",
+    description: "Reel publicado pelo One Day With com uma cobertura de aniversário com tema brasilidades.",
+    instagram: "https://www.instagram.com/reel/DfDxvSjTwaM/",
+    items: [
+      {
+        type: "instagram",
+        src: "https://www.instagram.com/reel/DfDxvSjTwaM/",
+        caption: "Reel publicado / cobertura de aniversário"
+      }
+    ]
+  },
+  "project-04": {
+    title: "Eventos / CyberShot entre convidados",
+    label: "PROJECT / 04",
+    description: "Uma mini CyberShot circula entre os convidados e leva registros espontâneos para o vídeo final da cobertura.",
+    instagram: "https://www.instagram.com/reel/DdsAoROz6b0/",
+    items: [
+      {
+        type: "instagram",
+        src: "https://www.instagram.com/reel/DdsAoROz6b0/",
+        caption: "Reel publicado / experiência CyberShot"
+      }
+    ]
+  },
+  "project-05": {
+    title: "Beauty Fair 2026 / Duda Faria Beauty",
+    label: "PROJECT / 05",
+    description: "Cobertura de um dia na Beauty Fair com Duda Faria Beauty, reunindo tendências e experiências do setor.",
+    instagram: "https://www.instagram.com/reel/DdATYATz6MH/",
+    items: [
+      {
+        type: "instagram",
+        src: "https://www.instagram.com/reel/DdATYATz6MH/",
+        caption: "Reel publicado / Beauty Fair 2026"
       }
     ]
   }

@@ -38,7 +38,7 @@ class MediaGalleryTests(unittest.TestCase):
         for asset in (
             'assets/project-02-thumbnail.webp',
             'assets/rico-bts-filming-color.webp',
-            'assets/rico-bts-filming-bw.webp',
+            'assets/project-02-bts-02.webp',
             'assets/rico-bts-menu.webp',
             'assets/rico-bts-meat.webp',
             'assets/rico-bts-video-01.mp4',
@@ -46,6 +46,22 @@ class MediaGalleryTests(unittest.TestCase):
         ):
             self.assertIn(asset, MEDIA_DATA)
             self.assertTrue((ROOT / asset).exists(), asset)
+
+    def test_social_projects_use_public_instagram_reels(self):
+        for shortcode in ('DfDxvSjTwaM', 'DdsAoROz6b0', 'DdATYATz6MH'):
+            self.assertIn(shortcode, MEDIA_DATA)
+        for project in ('project-03', 'project-04', 'project-05'):
+            self.assertIn(project, MEDIA_DATA)
+
+    def test_instagram_player_is_loaded_only_for_the_active_gallery_slide(self):
+        self.assertIn('data-instagram-embed', SCRIPT)
+        self.assertIn('window.instgrm', SCRIPT)
+        self.assertIn("script.src = 'https://www.instagram.com/embed.js'", SCRIPT)
+        self.assertIn('syncActiveInstagramEmbed()', SCRIPT)
+
+    def test_whatsapp_links_use_the_profile_business_short_link(self):
+        self.assertIn('https://wa.me/message/VWOKARGCO3MIB1', HTML)
+        self.assertIn('data-whatsapp-short-link', HTML)
 
     def test_equipment_media_is_present_as_its_own_horizontal_rail(self):
         self.assertIn('equipment-rail', HTML)
@@ -58,8 +74,8 @@ class MediaGalleryTests(unittest.TestCase):
             self.assertTrue((ROOT / asset).exists(), asset)
 
     def test_video_sources_are_lazy_hydrated(self):
-        self.assertIn('data-video-src', SCRIPT)
-        self.assertIn('preload="metadata"', SCRIPT)
+        self.assertIn('dataset.videoSrc', SCRIPT)
+        self.assertIn("video.preload = 'metadata'", SCRIPT)
         self.assertIn('removeAttribute("src")', SCRIPT)
 
     def test_carousel_pauses_video_when_slide_changes_or_modal_closes(self):
