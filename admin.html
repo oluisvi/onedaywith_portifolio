@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Editar catálogo · One Day With</title>
+  <link rel="stylesheet" href="admin.css">
+  <script type="module" src="admin.js"></script>
+</head>
+<body>
+  <main class="admin-shell">
+    <header class="admin-header">
+      <a class="admin-brand" href="/" aria-label="One Day With, voltar ao site">ONE DAY <span>WITH</span></a>
+      <p>PAINEL DO CATÁLOGO</p>
+      <button class="button button--quiet" type="button" data-logout hidden>Sair</button>
+    </header>
+    <section class="login-panel" data-login-panel aria-labelledby="login-title">
+      <p class="eyebrow">ÁREA DE EDIÇÃO</p>
+      <h1 id="login-title">Acesse seu catálogo.</h1>
+      <form data-login-form>
+        <label>Usuário<input name="username" autocomplete="username" required></label>
+        <label>Senha<input name="password" type="password" autocomplete="current-password" required></label>
+        <button class="button" type="submit">Entrar</button>
+      </form>
+      <p class="notice" data-login-message role="status" aria-live="polite"></p>
+    </section>
+    <section class="workspace" data-workspace hidden>
+      <div class="workspace-heading">
+        <div><p class="eyebrow">SEUS TRABALHOS</p><h1>Catálogo</h1></div>
+        <button class="button" type="button" data-new-project>Adicionar projeto</button>
+      </div>
+      <p class="notice" data-page-message role="status" aria-live="polite"></p>
+      <div class="workspace-grid">
+        <section class="project-list" aria-labelledby="projects-title">
+          <h2 id="projects-title">Projetos</h2>
+          <p data-project-loading>Carregando projetos…</p>
+          <p data-project-empty hidden>Nenhum projeto cadastrado ainda.</p>
+          <ol data-project-list></ol>
+        </section>
+        <section class="editor" aria-labelledby="editor-title">
+          <div class="editor-heading"><div><p class="eyebrow">EDIÇÃO</p><h2 id="editor-title">Novo projeto</h2></div></div>
+          <form data-project-form>
+            <input type="hidden" name="id">
+            <label>Título<input name="title" maxlength="120" required></label>
+            <label>Categoria<input name="category" maxlength="60" placeholder="Ex.: Evento · Brasilidades" required></label>
+            <label>Descrição<textarea name="description" rows="4" maxlength="600" required></textarea></label>
+            <label>Link do Instagram<input name="instagramUrl" type="url" inputmode="url" placeholder="https://www.instagram.com/…"></label>
+            <p class="field-help">O link abre a publicação no Instagram. Para mostrar o vídeo na miniatura, envie o arquivo MP4 abaixo.</p>
+            <label>Vídeo MP4 ou WebM<input name="videoFile" type="file" accept="video/mp4,video/webm"></label>
+            <label>Capa personalizada <span>(opcional)</span><input name="posterFile" type="file" accept="image/jpeg,image/png,image/webp"></label>
+            <p class="field-help">Sem capa personalizada, usamos o primeiro quadro do vídeo como miniatura.</p>
+            <div class="form-row">
+              <label>Ordem<input name="order" type="number" min="0" step="1" value="0"></label>
+              <label class="check-label"><input name="published" type="checkbox" checked> Publicado no site</label>
+            </div>
+            <div class="form-actions">
+              <button class="button" type="submit" data-save>Salvar projeto</button>
+              <button class="button button--quiet" type="button" data-cancel>Cancelar</button>
+              <button class="button button--danger" type="button" data-delete hidden>Excluir</button>
+            </div>
+            <p class="notice" data-form-message role="status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

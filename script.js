@@ -1,4 +1,5 @@
-(() => {
+ (async () => {
+  await window.ONE_DAY_CATALOG_PROMISE;
   const root = document.documentElement;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -21,34 +22,27 @@
     });
   };
 
-  document.querySelectorAll('[data-preview-toggle]').forEach((button) => {
+  document.addEventListener('play', (event) => {
+    const video = event.target;
+    if (video.matches?.('video[data-card-preview]')) updatePreviewButton(video.closest('[data-preview-toggle]'), true);
+  }, true);
+  document.addEventListener('pause', (event) => {
+    const video = event.target;
+    if (video.matches?.('video[data-card-preview]')) updatePreviewButton(video.closest('[data-preview-toggle]'), false);
+  }, true);
+  document.addEventListener('error', (event) => {
+    const video = event.target;
+    if (video.matches?.('video[data-card-preview]')) updatePreviewButton(video.closest('[data-preview-toggle]'), false);
+  }, true);
+  document.addEventListener('click', async (event) => {
+    const button = event.target.closest('[data-preview-toggle]');
+    if (!button) return;
     const video = button.querySelector('video[data-card-preview]');
     if (!video) return;
-
-    const state = button.querySelector('[data-preview-state]');
-    button.dataset.previewDefault = state?.textContent?.trim() || '▶ PRÉVIA';
-    video.addEventListener('play', () => updatePreviewButton(button, true));
-    video.addEventListener('pause', () => updatePreviewButton(button, false));
-    video.addEventListener('error', () => updatePreviewButton(button, false));
-
-    button.addEventListener('click', async () => {
-      if (!video.paused) {
-        video.pause();
-        return;
-      }
-
-      pauseCardPreviewVideos(video);
-      if (!video.hasAttribute('src')) {
-        video.src = video.dataset.previewSrc;
-        video.load();
-      }
-
-      try {
-        await video.play();
-      } catch (_) {
-        updatePreviewButton(button, false);
-      }
-    });
+    if (!video.paused) { video.pause(); return; }
+    pauseCardPreviewVideos(video);
+    if (!video.hasAttribute('src')) { video.src = video.dataset.previewSrc; video.load(); }
+    try { await video.play(); } catch (_) { updatePreviewButton(button, false); }
   });
 
   const cardPreviewIsPlaying = () => Array.from(document.querySelectorAll('video[data-card-preview]')).some((video) => !video.paused);
@@ -187,6 +181,7 @@
   const projectTrack = document.querySelector('[data-project-track]');
   if (projectTrack) {
     const sourceCards = Array.from(projectTrack.querySelectorAll('[data-project-card]'));
+    if (sourceCards.length) {
     const previous = document.querySelector('[data-catalog-prev]');
     const next = document.querySelector('[data-catalog-next]');
     const toggle = document.querySelector('[data-catalog-toggle]');
@@ -273,6 +268,7 @@
       if (reduceMotion || explicitPause || pointerInside || focusInside || document.hidden || lightboxOpen || cardPreviewIsPlaying()) return;
       setActive(activeIndex + 1);
     }, 6200);
+    }
   }
 
   const lightbox = document.querySelector('[data-media-lightbox]');
@@ -468,12 +464,11 @@
     }, reduceMotion ? 0 : 180);
   };
 
-  document.querySelectorAll('[data-open-gallery]').forEach((button) => {
-    button.addEventListener('click', () => {
-      if (!renderGallery(button.dataset.openGallery)) return;
-      opener = button;
-      openLightbox();
-    });
+  document.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-open-gallery]');
+    if (!button || !renderGallery(button.dataset.openGallery)) return;
+    opener = button;
+    openLightbox();
   });
 
   previous.addEventListener('click', () => goTo(activeIndex - 1));
