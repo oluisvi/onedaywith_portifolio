@@ -6,8 +6,9 @@ HTML = (ROOT / 'index.html').read_text(encoding='utf-8')
 CSS = (ROOT / 'styles.css').read_text(encoding='utf-8') + (ROOT / 'expansion.css').read_text(encoding='utf-8')
 
 class PortfolioContentTests(unittest.TestCase):
-    def test_second_reel_is_present(self):
-        self.assertIn('Dcb4GaaTQ2X', HTML)
+    def test_user_selected_reels_are_present(self):
+        for shortcode in ('DfDxvSjTwaM', 'DeX09gjMga7', 'Dd4CWywRlkB', 'DdfJl9gu43b', 'Ddl_1S4OOSh'):
+            self.assertIn(shortcode, HTML)
 
     def test_positioning_matches_client_answers(self):
         self.assertIn('criadora de conteúdo especializada em vídeos para redes sociais', HTML.lower())
@@ -37,8 +38,8 @@ class PortfolioContentTests(unittest.TestCase):
     def test_logo_and_real_media_are_used(self):
         expected_assets = (
             'assets/one-day-with-logo.webp',
-            'assets/project-01-thumbnail.webp',
-            'assets/project-02-thumbnail.webp',
+            'assets/reel-dfdxv-poster.webp',
+            'assets/project-02-preview-poster.webp',
             'assets/equipment-notebook.webp',
             'assets/equipment-kit.webp',
             'assets/equipment-studio.webp',

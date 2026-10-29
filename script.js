@@ -2,6 +2,60 @@
   const root = document.documentElement;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  const updatePreviewButton = (button, playing) => {
+    const state = button.querySelector('[data-preview-state]');
+    const title = button.dataset.previewTitle || 'vídeo';
+    const defaultState = button.dataset.previewDefault || '▶ PRÉVIA';
+    button.setAttribute('aria-pressed', String(playing));
+    button.setAttribute('aria-label', `${playing ? 'Pausar' : 'Reproduzir'} prévia de ${title}`);
+    button.classList.toggle('is-playing', playing);
+    if (state) state.textContent = playing ? 'Ⅱ PAUSAR / PRÉVIA' : defaultState;
+  };
+
+  const pauseCardPreviewVideos = (exceptVideo = null) => {
+    document.querySelectorAll('video[data-card-preview]').forEach((video) => {
+      if (video === exceptVideo) return;
+      video.pause();
+      const button = video.closest('[data-preview-toggle]');
+      if (button) updatePreviewButton(button, false);
+    });
+  };
+
+  document.querySelectorAll('[data-preview-toggle]').forEach((button) => {
+    const video = button.querySelector('video[data-card-preview]');
+    if (!video) return;
+
+    const state = button.querySelector('[data-preview-state]');
+    button.dataset.previewDefault = state?.textContent?.trim() || '▶ PRÉVIA';
+    video.addEventListener('play', () => updatePreviewButton(button, true));
+    video.addEventListener('pause', () => updatePreviewButton(button, false));
+    video.addEventListener('error', () => updatePreviewButton(button, false));
+
+    button.addEventListener('click', async () => {
+      if (!video.paused) {
+        video.pause();
+        return;
+      }
+
+      pauseCardPreviewVideos(video);
+      if (!video.hasAttribute('src')) {
+        video.src = video.dataset.previewSrc;
+        video.load();
+      }
+
+      try {
+        await video.play();
+      } catch (_) {
+        updatePreviewButton(button, false);
+      }
+    });
+  });
+
+  const cardPreviewIsPlaying = () => Array.from(document.querySelectorAll('video[data-card-preview]')).some((video) => !video.paused);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) pauseCardPreviewVideos();
+  });
+
   const reveals = document.querySelectorAll('[data-reveal]');
   if (reduceMotion || !('IntersectionObserver' in window)) {
     reveals.forEach((el) => el.classList.add('is-visible'));
@@ -163,6 +217,7 @@
     const setActive = (index, behavior = 'smooth') => {
       activeIndex = modulo(index, sourceCards.length);
       status.textContent = `${String(activeIndex + 1).padStart(2, '0')} / ${String(sourceCards.length).padStart(2, '0')}`;
+      pauseCardPreviewVideos();
       scrollToCard(sourceCards[activeIndex], behavior);
     };
 
@@ -171,6 +226,7 @@
     next.addEventListener('click', () => setActive(activeIndex + 1));
 
     const updateFromScroll = () => {
+      const previousIndex = activeIndex;
       const children = Array.from(projectTrack.children);
       const center = projectTrack.getBoundingClientRect().left + projectTrack.clientWidth / 2;
       const closestIndex = children.reduce((best, card, index) => {
@@ -188,6 +244,7 @@
         activeIndex = closestIndex - 1;
       }
       status.textContent = `${String(activeIndex + 1).padStart(2, '0')} / ${String(sourceCards.length).padStart(2, '0')}`;
+      if (activeIndex !== previousIndex) pauseCardPreviewVideos();
     };
 
     projectTrack.addEventListener('scroll', () => {
@@ -213,7 +270,7 @@
     });
     window.setInterval(() => {
       const lightboxOpen = document.querySelector('[data-media-lightbox]:not([hidden])');
-      if (reduceMotion || explicitPause || pointerInside || focusInside || document.hidden || lightboxOpen) return;
+      if (reduceMotion || explicitPause || pointerInside || focusInside || document.hidden || lightboxOpen || cardPreviewIsPlaying()) return;
       setActive(activeIndex + 1);
     }, 6200);
   }
@@ -245,55 +302,6 @@
     track.querySelectorAll('video').forEach((video) => video.pause());
   };
 
-  const processInstagramEmbeds = () => window.instgrm?.Embeds?.process?.();
-
-  const ensureInstagramEmbedScript = () => {
-    if (window.instgrm?.Embeds) {
-      processInstagramEmbeds();
-      return;
-    }
-
-    let script = document.querySelector('[data-instagram-embed-script]');
-    if (!script) {
-      script = document.createElement('script');
-      script.src = 'https://www.instagram.com/embed.js';
-      script.async = true;
-      script.dataset.instagramEmbedScript = 'true';
-      script.addEventListener('load', () => {
-        script.dataset.loaded = 'true';
-        processInstagramEmbeds();
-      }, { once: true });
-      document.head.appendChild(script);
-    } else if (script.dataset.loaded !== 'true') {
-      script.addEventListener('load', processInstagramEmbeds, { once: true });
-    }
-  };
-
-  const syncActiveInstagramEmbed = () => {
-    const activeSlide = track.children[activeIndex];
-    track.querySelectorAll('[data-instagram-embed]').forEach((slot) => {
-      if (!activeSlide?.contains(slot)) slot.replaceChildren();
-    });
-
-    const slot = activeSlide?.querySelector('[data-instagram-embed]');
-    if (!slot || slot.childElementCount) return;
-
-    const postUrl = slot.dataset.instagramEmbedUrl;
-    const blockquote = document.createElement('blockquote');
-    blockquote.className = 'instagram-media';
-    blockquote.setAttribute('data-instgrm-captioned', '');
-    blockquote.dataset.instgrmPermalink = `${postUrl}?utm_source=ig_embed&campaign=loading`;
-    blockquote.dataset.instgrmVersion = '14';
-    const fallbackLink = document.createElement('a');
-    fallbackLink.href = postUrl;
-    fallbackLink.target = '_blank';
-    fallbackLink.rel = 'noopener noreferrer';
-    fallbackLink.textContent = 'Abrir este Reel no Instagram';
-    blockquote.appendChild(fallbackLink);
-    slot.appendChild(blockquote);
-    ensureInstagramEmbedScript();
-  };
-
   const syncActiveVideoSource = () => {
     const activeSlide = track.children[activeIndex];
     track.querySelectorAll('video').forEach((video) => {
@@ -322,7 +330,6 @@
     });
     pauseVideos();
     syncActiveVideoSource();
-    syncActiveInstagramEmbed();
   };
 
   const goTo = (index, shouldScroll = true) => {
@@ -374,13 +381,6 @@
       video.addEventListener('ended', () => { play.hidden = false; });
 
       frame.append(video, play);
-    } else if (item.type === 'instagram') {
-      frame.classList.add('media-carousel__frame--instagram');
-      const slot = document.createElement('div');
-      slot.dataset.instagramEmbed = 'true';
-      slot.dataset.instagramEmbedUrl = item.src;
-      slot.setAttribute('aria-label', 'Reel público incorporado do Instagram');
-      frame.appendChild(slot);
     } else {
       const image = document.createElement('img');
       image.src = item.src;
@@ -404,22 +404,12 @@
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'media-lightbox__thumb';
-    button.setAttribute('aria-label', item.type === 'instagram' ? `Abrir Reel do Instagram ${index + 1}` : `Abrir mídia ${index + 1}`);
-    if (item.type === 'instagram') {
-      button.classList.add('media-lightbox__thumb--instagram');
-      const play = document.createElement('span');
-      play.setAttribute('aria-hidden', 'true');
-      play.textContent = '▶';
-      const label = document.createElement('span');
-      label.textContent = 'Reel';
-      button.append(play, label);
-    } else {
-      const image = document.createElement('img');
-      image.src = item.type === 'video' ? item.poster : item.src;
-      image.alt = '';
-      image.loading = 'lazy';
-      button.appendChild(image);
-    }
+    button.setAttribute('aria-label', item.type === 'video' ? `Abrir vídeo ${index + 1}` : `Abrir mídia ${index + 1}`);
+    const image = document.createElement('img');
+    image.src = item.type === 'video' ? item.poster : item.src;
+    image.alt = '';
+    image.loading = 'lazy';
+    button.appendChild(image);
     button.addEventListener('click', () => goTo(index));
     return button;
   };
@@ -449,6 +439,7 @@
 
   const openLightbox = () => {
     if (closeTimer) window.clearTimeout(closeTimer);
+    pauseCardPreviewVideos();
     previousBodyOverflow = document.body.style.overflow;
     lightbox.hidden = false;
     document.body.classList.add('has-lightbox-open');

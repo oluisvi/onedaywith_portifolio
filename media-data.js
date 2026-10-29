@@ -1,26 +1,15 @@
 window.ONE_DAY_MEDIA = {
   "project-01": {
-    title: "Estética / conteúdo informativo",
+    title: "Cobertura de aniversário / Brasilidades",
     label: "PROJECT / 01",
-    description: "Bastidores do conteúdo publicado sobre sessões de laser.",
-    instagram: "https://www.instagram.com/reel/DcWL1mEhLUs/?igsi=ZGV4ZGN0eDZuMWw2",
+    description: "Flores, cenário e detalhes da festa conduzem uma cobertura que acompanha o dia sem tirar a essência da comemoração do centro.",
+    instagram: "https://www.instagram.com/onedaywitth/reel/DfDxvSjTwaM/",
     items: [
       {
-        type: "image",
-        src: "assets/project-01-thumbnail.webp",
-        alt: "Capa do Reel com profissional falando sobre quantas sessões de laser são necessárias",
-        caption: "Capa publicada / Reel"
-      },
-      {
-        type: "image",
-        src: "assets/project-01-bts-phone.webp",
-        alt: "Bastidor com profissional usando o celular durante a produção de conteúdo",
-        caption: "Bastidor / direção e conteúdo"
-      },
-      {
-        type: "instagram",
-        src: "https://www.instagram.com/reel/DcWL1mEhLUs/",
-        caption: "Reel publicado / conteúdo informativo de beleza"
+        type: "video",
+        src: "assets/reel-dfdxv.mp4",
+        poster: "assets/reel-dfdxv-poster.webp",
+        caption: "Reel publicado / cobertura de aniversário Brasilidades"
       }
     ]
   },
@@ -28,7 +17,7 @@ window.ONE_DAY_MEDIA = {
     title: "Rico Defumados / Festa de Paraibuna",
     label: "PROJECT / 02",
     description: "Captação de produto, ambiente e rotina durante a Festa de Paraibuna.",
-    instagram: "https://www.instagram.com/reel/Dcb4GaaTQ2X/?utm_source=ig_web_button_share_sheet&igsi=MzRlODBiNWFlZA==",
+    instagram: "https://www.instagram.com/onedaywitth/",
     items: [
       {
         type: "image",
@@ -87,41 +76,58 @@ window.ONE_DAY_MEDIA = {
     ]
   },
   "project-03": {
-    title: "Cobertura de aniversário / Brasilidades",
+    title: "Espaço Tia Chica Fazendinha / Guararema",
     label: "PROJECT / 03",
-    description: "Reel publicado pelo One Day With com uma cobertura de aniversário com tema brasilidades.",
-    instagram: "https://www.instagram.com/reel/DfDxvSjTwaM/",
+    description: "Um passeio visual pelo Espaço Tia Chica Fazendinha, da luz da piscina ao acolhimento da casa, para apresentar o lugar e convidar a viver a experiência.",
+    instagram: "https://www.instagram.com/onedaywitth/reel/DeX09gjMga7/",
     items: [
       {
-        type: "instagram",
-        src: "https://www.instagram.com/reel/DfDxvSjTwaM/",
-        caption: "Reel publicado / cobertura de aniversário"
+        type: "video",
+        src: "assets/reel-dex09.mp4",
+        poster: "assets/reel-dex09-poster.webp",
+        caption: "Reel publicado / Espaço Tia Chica Fazendinha"
       }
     ]
   },
   "project-04": {
-    title: "Eventos / CyberShot entre convidados",
+    title: "Celebração / Emanuelle Castro",
     label: "PROJECT / 04",
-    description: "Uma mini CyberShot circula entre os convidados e leva registros espontâneos para o vídeo final da cobertura.",
-    instagram: "https://www.instagram.com/reel/DdsAoROz6b0/",
+    description: "Um registro leve do encontro, das pessoas e dos detalhes que fizeram a celebração acontecer, com espaço para a espontaneidade de quem estava ali.",
+    instagram: "https://www.instagram.com/onedaywitth/reel/Dd4CWywRlkB/",
     items: [
       {
-        type: "instagram",
-        src: "https://www.instagram.com/reel/DdsAoROz6b0/",
-        caption: "Reel publicado / experiência CyberShot"
+        type: "video",
+        src: "assets/reel-dd4cwy.mp4",
+        poster: "assets/reel-dd4cwy-poster.webp",
+        caption: "Reel publicado / celebração com Emanuelle Castro"
       }
     ]
   },
   "project-05": {
-    title: "Beauty Fair 2026 / Duda Faria Beauty",
+    title: "Just a Girls / chamada de evento",
     label: "PROJECT / 05",
-    description: "Cobertura de um dia na Beauty Fair com Duda Faria Beauty, reunindo tendências e experiências do setor.",
-    instagram: "https://www.instagram.com/reel/DdATYATz6MH/",
+    description: "Uma chamada em movimento que apresenta a energia do Just a Girls e cria expectativa antes do encontro.",
+    instagram: "https://www.instagram.com/onedaywitth/reel/DdfJl9gu43b/",
     items: [
       {
-        type: "instagram",
-        src: "https://www.instagram.com/reel/DdATYATz6MH/",
-        caption: "Reel publicado / Beauty Fair 2026"
+        type: "video",
+        src: "assets/reel-ddfjl.mp4",
+        poster: "assets/reel-ddfjl-poster.webp",
+        caption: "Reel publicado / chamada do Just a Girls"
+      }
+    ]
+  },
+  "project-06": {
+    title: "Distribuidora Guerreiro / varejo",
+    label: "PROJECT / 06",
+    description: "Apresentação da Distribuidora Guerreiro com uma porta-voz, variedade de produtos e um convite direto para quem precisa abastecer a casa ou o negócio.",
+    instagram: "https://www.instagram.com/onedaywitth/reel/Ddl_1S4OOSh/",
+    items: [
+      {
+        type: "video",
+        src: "assets/reel-ddl.mp4",
+        poster: "assets/reel-ddl-poster.webp",
+        caption: "Reel publicado / Distribuidora Guerreiro"
       }
     ]
   }
