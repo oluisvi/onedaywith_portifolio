@@ -45,11 +45,12 @@
             <label>Título<input name="title" maxlength="120" required></label>
             <label>Categoria<input name="category" maxlength="60" placeholder="Ex.: Evento · Brasilidades" required></label>
             <label>Descrição<textarea name="description" rows="4" maxlength="600" required></textarea></label>
-            <label>Link do Instagram<input name="instagramUrl" type="url" inputmode="url" placeholder="https://www.instagram.com/…"></label>
-            <p class="field-help">O link abre a publicação no Instagram. Para mostrar o vídeo na miniatura, envie o arquivo MP4 abaixo.</p>
-            <label>Vídeo MP4 ou WebM<input name="videoFile" type="file" accept="video/mp4,video/webm"></label>
-            <label>Capa personalizada <span>(opcional)</span><input name="posterFile" type="file" accept="image/jpeg,image/png,image/webp"></label>
-            <p class="field-help">Sem capa personalizada, usamos o primeiro quadro do vídeo como miniatura.</p>
+            <label>Link do Reel ou publicação<input name="instagramUrl" type="url" inputmode="url" placeholder="https://www.instagram.com/reel/CODIGO/"></label>
+            <p class="field-help">Com o link do Instagram e uma capa, a prévia abre o player oficial do Reel no catálogo. Cole aqui o link da publicação; código de incorporação não é necessário.</p>
+            <label>Arquivo de vídeo MP4 ou WebM <span>(opcional se usar Reel do Instagram)</span><input name="videoFile" type="file" accept="video/mp4,video/webm"></label>
+            <p class="field-help">Envie o arquivo original para uma prévia nativa, reproduzida diretamente no site. O link do Instagram não é o arquivo de vídeo.</p>
+            <label>Capa / miniatura <span>(imagem, não substitui o vídeo)</span><input name="posterFile" type="file" accept="image/jpeg,image/png,image/webp"></label>
+            <p class="field-help">Para um Reel do Instagram, use a capa junto com o link. Para vídeo nativo, a capa é opcional: sem ela, usamos um quadro do MP4.</p>
             <div class="form-row">
               <label>Ordem<input name="order" type="number" min="0" step="1" value="0"></label>
               <label class="check-label"><input name="published" type="checkbox" checked> Publicado no site</label>

@@ -9,6 +9,16 @@
       return url.protocol === 'https:' || url.origin === window.location.origin ? url.href : '';
     } catch (_) { return ''; }
   };
+  const instagramEmbedUrl = (value) => {
+    const safe = safeUrl(value);
+    if (!safe) return '';
+    try {
+      const url = new URL(safe);
+      if (!/(^|\.)instagram\.com$/i.test(url.hostname)) return '';
+      const match = url.pathname.match(/^\/(reel|p|tv)\/([a-zA-Z0-9_-]+)\/?$/);
+      return match ? `https://www.instagram.com/${match[1]}/${match[2]}/embed/` : '';
+    } catch (_) { return ''; }
+  };
   const addText = (parent, tag, className, value) => {
     const node = document.createElement(tag);
     if (className) node.className = className;
@@ -23,12 +33,18 @@
     const mediaButton = document.createElement('button');
     mediaButton.type = 'button';
     mediaButton.className = 'project-card__media project-card__media-button project-card__media--video';
-    mediaButton.dataset.previewToggle = '';
     mediaButton.dataset.previewTitle = project.title;
-    mediaButton.setAttribute('aria-pressed', 'false');
-    mediaButton.setAttribute('aria-label', `Reproduzir prévia de ${project.title}`);
-    mediaButton.disabled = !project.videoUrl;
+    const embedUrl = instagramEmbedUrl(project.instagramUrl);
+    const hasNativeVideo = Boolean(project.videoUrl);
+    const hasPreview = hasNativeVideo || Boolean(embedUrl);
+    mediaButton.setAttribute('aria-label', hasNativeVideo
+      ? `Reproduzir prévia de ${project.title}`
+      : embedUrl ? `Abrir prévia do Instagram de ${project.title}` : `Ver imagem de ${project.title}`);
+    mediaButton.disabled = !hasPreview && !project.posterUrl;
+    if (!hasNativeVideo && (embedUrl || project.posterUrl)) mediaButton.dataset.openGallery = project.id;
     if (project.videoUrl) {
+      mediaButton.dataset.previewToggle = '';
+      mediaButton.setAttribute('aria-pressed', 'false');
       const video = document.createElement('video');
       video.className = 'project-card__preview-video';
       video.dataset.cardPreview = '';
@@ -52,7 +68,7 @@
     const play = document.createElement('span');
     play.className = 'project-card__play';
     play.setAttribute('aria-hidden', 'true');
-    addText(play, 'span', '', project.videoUrl ? '▶ PRÉVIA' : 'IMAGEM');
+    addText(play, 'span', '', hasNativeVideo ? '▶ PRÉVIA' : embedUrl ? '▶ REEL · PRÉVIA' : 'IMAGEM');
     mediaButton.append(play);
     card.append(mediaButton);
 
@@ -102,6 +118,7 @@
         const videoUrl = safeUrl(project.videoUrl);
         const posterUrl = safeUrl(project.posterUrl);
         const instagramUrl = safeUrl(project.instagramUrl);
+        const instagramEmbed = instagramEmbedUrl(instagramUrl);
         const previous = Object.hasOwn(library, project.id) ? library[project.id] : { items: [] };
         const items = Array.isArray(previous.items) ? [...previous.items] : [];
         const sameMedia = (src) => {
@@ -110,7 +127,10 @@
         if (videoUrl && !items.some((item) => sameMedia(item.src))) {
           items.unshift({ type: 'video', src: videoUrl, poster: posterUrl, caption: project.title });
         }
-        if (!videoUrl && posterUrl && items.length === 0) items.push({ type: 'image', src: posterUrl, alt: project.title, caption: project.title });
+        if (!videoUrl && instagramEmbed && !items.some((item) => item.type === 'instagram' && item.src === instagramEmbed)) {
+          items.unshift({ type: 'instagram', src: instagramEmbed, poster: posterUrl, caption: project.title });
+        }
+        if (!videoUrl && !instagramEmbed && posterUrl && items.length === 0) items.push({ type: 'image', src: posterUrl, alt: project.title, caption: project.title });
         library[project.id] = {
           ...previous,
           title: project.title,

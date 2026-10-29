@@ -300,6 +300,9 @@
 
   const syncActiveVideoSource = () => {
     const activeSlide = track.children[activeIndex];
+    track.querySelectorAll('iframe[data-instagram-embed]').forEach((iframe) => {
+      if (!activeSlide || !activeSlide.contains(iframe)) iframe.remove();
+    });
     track.querySelectorAll('video').forEach((video) => {
       if (activeSlide && activeSlide.contains(video)) {
         if (!video.getAttribute('src')) {
@@ -312,6 +315,19 @@
         video.load();
       }
     });
+    if (activeSlide?.dataset.instagramEmbed && !activeSlide.querySelector('iframe[data-instagram-embed]')) {
+      const iframe = document.createElement('iframe');
+      iframe.dataset.instagramEmbed = '';
+      iframe.src = activeSlide.dataset.instagramEmbed;
+      iframe.title = `Prévia do Reel: ${activeSlide.dataset.instagramTitle || 'Instagram'}`;
+      iframe.loading = 'lazy';
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      const placeholder = activeSlide.querySelector('[data-instagram-placeholder]');
+      if (placeholder) placeholder.replaceWith(iframe);
+      else activeSlide.querySelector('.media-carousel__frame')?.append(iframe);
+    }
   };
 
   const updateUi = () => {
@@ -377,6 +393,25 @@
       video.addEventListener('ended', () => { play.hidden = false; });
 
       frame.append(video, play);
+    } else if (item.type === 'instagram') {
+      slide.classList.add('media-carousel__slide--instagram');
+      slide.dataset.instagramEmbed = item.src;
+      slide.dataset.instagramTitle = item.caption || '';
+      frame.classList.add('media-carousel__frame--instagram');
+      const placeholder = document.createElement('div');
+      placeholder.className = 'media-carousel__instagram-placeholder';
+      placeholder.dataset.instagramPlaceholder = '';
+      if (item.poster) {
+        const image = document.createElement('img');
+        image.src = item.poster;
+        image.alt = '';
+        image.loading = 'lazy';
+        placeholder.append(image);
+      }
+      const label = document.createElement('span');
+      label.textContent = 'Prévia hospedada pelo Instagram';
+      placeholder.append(label);
+      frame.append(placeholder);
     } else {
       const image = document.createElement('img');
       image.src = item.src;
@@ -400,9 +435,9 @@
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'media-lightbox__thumb';
-    button.setAttribute('aria-label', item.type === 'video' ? `Abrir vídeo ${index + 1}` : `Abrir mídia ${index + 1}`);
+    button.setAttribute('aria-label', item.type === 'video' ? `Abrir vídeo ${index + 1}` : item.type === 'instagram' ? `Abrir Reel do Instagram ${index + 1}` : `Abrir mídia ${index + 1}`);
     const image = document.createElement('img');
-    image.src = item.type === 'video' ? item.poster : item.src;
+    image.src = item.type === 'video' || item.type === 'instagram' ? item.poster : item.src;
     image.alt = '';
     image.loading = 'lazy';
     button.appendChild(image);
@@ -458,6 +493,7 @@
   const closeLightbox = () => {
     lightbox.classList.remove('is-open');
     pauseVideos();
+    track.querySelectorAll('iframe[data-instagram-embed]').forEach((iframe) => iframe.remove());
     closeTimer = window.setTimeout(() => {
       lightbox.hidden = true;
       cleanupLightbox();
