@@ -46,11 +46,11 @@
             <label>Categoria<input name="category" maxlength="60" placeholder="Ex.: Evento · Brasilidades" required></label>
             <label>Descrição<textarea name="description" rows="4" maxlength="600" required></textarea></label>
             <label>Link do Reel ou publicação<input name="instagramUrl" type="url" inputmode="url" placeholder="https://www.instagram.com/reel/CODIGO/"></label>
-            <p class="field-help">Com o link do Instagram e uma capa, a prévia abre o player oficial do Reel no catálogo. Cole aqui o link da publicação; código de incorporação não é necessário.</p>
-            <label>Arquivo de vídeo MP4 ou WebM <span>(opcional se usar Reel do Instagram)</span><input name="videoFile" type="file" accept="video/mp4,video/webm"></label>
-            <p class="field-help">Envie o arquivo original para uma prévia nativa, reproduzida diretamente no site. O link do Instagram não é o arquivo de vídeo.</p>
-            <label>Capa / miniatura <span>(imagem, não substitui o vídeo)</span><input name="posterFile" type="file" accept="image/jpeg,image/png,image/webp"></label>
-            <p class="field-help">Para um Reel do Instagram, use a capa junto com o link. Para vídeo nativo, a capa é opcional: sem ela, usamos um quadro do MP4.</p>
+            <p class="field-help">Este link só cria o botão “Assistir no Instagram”. Ele não reproduz o vídeo dentro do card.</p>
+            <label>Arquivo de vídeo MP4 ou WebM <span>(necessário para a prévia no card)</span><input name="videoFile" type="file" accept="video/mp4,video/webm"></label>
+            <p class="field-help">Selecione o arquivo original do vídeo. Ao salvar, ele será enviado para o site e o botão “▶ PRÉVIA” vai reproduzi-lo ali mesmo. O link do Instagram não substitui este arquivo.</p>
+            <label>Capa / miniatura <span>(opcional, é só uma imagem)</span><input name="posterFile" type="file" accept="image/jpeg,image/png,image/webp"></label>
+            <p class="field-help">A capa aparece antes de dar play. Ela não contém o vídeo: para a prévia no card, envie também o arquivo MP4/WebM acima.</p>
             <div class="form-row">
               <label>Ordem<input name="order" type="number" min="0" step="1" value="0"></label>
               <label class="check-label"><input name="published" type="checkbox" checked> Publicado no site</label>
